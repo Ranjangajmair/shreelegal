@@ -1,0 +1,158 @@
+<style>
+    .mainContainer {
+        padding-left: 20px;
+        padding-right: 20px;
+    }
+
+    @media only screen and (max-width: 1300px) {
+        .mainContainer {
+            padding-left: 10px;
+            padding-right: 5px;
+        }
+
+        .h-phone {
+            display: none;
+        }
+
+    }
+
+    #logo {
+        width: 50px;
+        /* Set the desired width of the logo div */
+        height: 50px;
+        /* Set the desired height of the logo div */
+        display: flex;
+        /* To handle multiple images */
+        align-items: center;
+        /* Center align the images vertically */
+        margin-right: 100px;
+    }
+
+    .logoDiv {
+        display: flex;
+        flex-direction: row;
+        gap: 10px;
+        height: 50px;
+        width: 50px;
+    }
+
+    #logo .logo,
+    #logo .logo-2 {
+        width: 100%;
+        /* Image width will adapt to the parent div */
+        height: 100%;
+        /* Image height will adapt to the parent div */
+        object-fit: contain;
+        /* Keep the aspect ratio of the image */
+    }
+</style>
+
+<!-- Add Font Awesome CDN in your head section -->
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+
+<!-- header begin -->
+<header class="header-light header-mobile" style="background-color:rgb(35, 35, 44);">
+    <div class="mainContainer">
+        <div class="row">
+            <div class="col-md-12">
+                <div class="de-flex sm-pt10">
+                    <div class="de-flex-col">
+                        <!-- logo begin -->
+                        <div id="logo">
+                            <a class="logoDiv" href="index.html">
+                                <!-- <img alt="" class="logo" src="images/logo.jpeg" />
+                                <img alt="" class="logo-2" src="images/logo.jpeg" /> -->
+                                <div
+                                    style="line-height: 1; display: flex; align-items: center; justify-content: center;">
+                                    <div style="color: white; font-weight: bold;">
+                                        Shree Legal
+                                    </div>
+                                </div>
+                            </a>
+
+                        </div>
+                        <!-- logo close -->
+                    </div>
+                    <div class="de-flex-col header-col-mid">
+                        <!-- mainmenu begin -->
+                        <ul id="mainmenu">
+                            <li><a href="index.html" class="menu-link" style="color: white;">Home</a></li>
+                            <li><a href="about.html" class="menu-link" style="color: white;">About</a></li>
+                            <li><a href="services.html" class="menu-link" style="color: white;">Services</a></li>
+                            <!-- <li><a href="#" class="menu-link">News</a></li> -->
+                            <li><a href="#" class="menu-link" style="color: white;">Publication</a></li>
+                            <!-- <li>
+                                <a class="news" style="cursor: pointer;">News</a>
+                                <ul class="submenu">
+                                    <li><a href="news.html">News</a></li>
+                                    <li><a href="publication.html">Publication</a></li>
+                                </ul>
+                            </li> -->
+                            <li><a href="team.html" class="menu-link" style="color: white;">Team</a></li>
+                            <li><a href="contact.html" class="menu-link" style="color: white;">Contact</a></li>
+                            <!-- <li><a href="#" class="menu-link" style="color: white;">Reviews</a></li> -->
+                            <li><a href="calculate.html" class="menu-link" style="color: white;">Calculate?</a></li>
+
+                        </ul>
+                        <!-- mainmenu close -->
+                    </div>
+                    <div class="de-flex-col">
+                        <div class="h-phone md-hide" style="color: white;">
+                            <span>Need&nbsp;Help?</span><i class="fa fa-phone" style="color: white;"></i> +977
+                            985-1201490
+                        </div>
+                        <span id="menu-btn"></span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Javascript Files ================================================== -->
+    <script src="js/designesia.js"></script>
+
+    <script>
+        var mobile_menu_show = 0; // Make sure this is globally available
+        var $tmp_h = '90'; // Set the default height of the header
+
+        // Function to handle the menu toggle
+        function handleMenuToggle() {
+            jQuery('#menu-btn').on("click", function () {
+                var h = jQuery('header')[0].scrollHeight;
+
+                if (mobile_menu_show == 0) {
+                    jQuery('header.header-mobile').stop(true).animate({
+                        'height': h
+                    }, 200, 'easeOutCubic');
+                    mobile_menu_show = 1;
+                } else {
+                    jQuery('header.header-mobile').stop(true).animate({
+                        'height': $tmp_h
+                    }, 200, 'easeOutCubic');
+                    mobile_menu_show = 0;
+                }
+            });
+        }
+
+        // Function to handle screen size changes with enquire.js
+        function handleScreenResize() {
+            enquire.register("screen and (min-width: 993px)", {
+                match: function () {
+                    mobile_menu_show = 1;
+                    jQuery("#menu-btn").hide();
+                },
+                unmatch: function () {
+                    mobile_menu_show = 0;
+                    jQuery("#menu-btn").show();
+                }
+            });
+        }
+
+        // Initialize everything in document ready
+        jQuery(document).ready(function () {
+            handleMenuToggle();  // Call the menu toggle function
+            handleScreenResize();  // Call the screen resize handler
+        });
+    </script>
+</header>
+<!-- header close -->

@@ -1,0 +1,142 @@
+<style>
+    .ul-style {
+        display: flex;
+        justify-content: space-between;
+        gap: 200px;
+    }
+
+
+    .mainfooter {
+        margin-top: 40px;
+    }
+
+    @media only screen and (max-width: 480px) {
+        .mainfooter {
+            margin-top: 0px;
+        }
+    }
+
+    @media only screen and (max-width: 644px) {
+        .subfooter {
+            height: 150px;
+        }
+    }
+
+    @media only screen and (max-width: 992px) {
+        span {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+        }
+
+        .mainDiv {
+            justify-content: center;
+        }
+
+        .widget {
+            padding-bottom: 0px;
+        }
+
+        .ul-style-2 {
+            display: flex;
+            justify-content: center;
+            gap: 200px;
+        }
+    }
+
+    @media only screen and (max-width: 480px) {
+        span {
+            display: flex;
+            flex-direction: column;
+            justify-content: start;
+        }
+    }
+</style>
+
+<!-- footer begin -->
+<footer style="background-color:rgb(35, 35, 44);">
+    <div class="container">
+        <div class="row" style="display: flex; justify-content: space-evenly;">
+            <div class="downDiv col-lg-4">
+                <div class="widget">
+                    <div class="mainDiv" style="display: flex; ">
+                        <a href="index.html"><img alt="" class="img-fluid mb20"
+                                style="display: flex; width: 50px; height: 50px;" src="images/logo.jpeg"></a>
+                        <h4 style="color: white; margin-left: 10px;">
+                            Shree Legal
+                        </h4>
+                    </div>
+                    <address class="s1">
+                        <span style="display: flex; flex-direction: row;">
+                            <i class="id-color fa fa-map-marker fa-lg"></i>
+                            <div>
+                                SwetBinayak Marga Babarmahal, Kathmandu 44600
+                            </div>
+
+                        </span>
+                        <span style="display: flex; flex-direction: row;">
+                            <i class="id-color fa fa-phone fa-lg"></i>
+                            <!-- +977-9851201490 -->
+
+                        </span>
+                        <span style="display: flex; flex-direction: row;">
+                            <i class="id-color fa fa-envelope-o fa-lg"></i>
+                            <div>
+                                <!-- advocatenischal@gmail.com; info@finlexassociates.com -->
+                            </div>
+
+                        </span>
+                    </address>
+                </div>
+            </div>
+            <div class=" mainfooter col-md-4">
+                <div style="display: flex; justify-content: center;">
+                    <h5 class="id-color mb20">
+                        Pages
+                    </h5>
+                </div>
+                <ul class="ul-style">
+                    <div>
+                        <li><a href="index.html" class="menu-link">Home</a></li>
+                        <li><a href="about.html" class="menu-link">About</a></li>
+                        <li><a href="services.html" class="menu-link">Services</a></li>
+                        <li><a href="publication.html" class="menu-link">Publication</a></li>
+                    </div>
+                    <div>
+                        <li><a href="team.html" class="menu-link">Team</a></li>
+                        <li><a href="contact.html" class="menu-link">Contact</a></li>
+                        <!-- <li><a href="review.html" class="menu-link">Reviews</a> -->
+                        <li><a href="calculate.html" class="menu-link">Calculate?</a>
+
+                    </div>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </div>
+    <div class="subfooter">
+        <div class="container">
+            <div class=" align-items-center"
+                style="display: flex; flex-direction: row; justify-content: space-between;">
+                <div class="">
+                    &copy; <span id="current-year"></span> - Shree Legal
+                    <!-- <div style="font-size: 13px; color: rgb(157, 157, 157); margin-top: 15px;">Designed and Developed by
+                        AF Interactive</div> -->
+                </div>
+
+                <div class="">
+                    <div class="social-icons">
+                        <a href="https://www.facebook.com/finlexassociates/" target="_blank"><i
+                                class="fa fa-facebook fa-lg"></i></a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</footer>
+<!-- footer close -->
+
+<!-- JavaScript to update the year -->
+<script>
+    document.getElementById('current-year').textContent = new Date().getFullYear();
+</script>

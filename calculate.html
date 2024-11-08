@@ -1,0 +1,523 @@
+<!DOCTYPE html>
+<html lang="zxx">
+
+<head>
+    <meta charset="utf-8">
+    <title>Calculator - Finlex Associates</title>
+    <link rel="icon" href="images/favicon.ico.png" type="image/gif" sizes="16x16">
+    <meta content="width=device-width, initial-scale=1.0" name="viewport" />
+    <meta content="Justica - Lawyer and Attorney Website Template" name="description">
+    <meta content="" name="keywords">
+    <meta content="" name="author">
+    <!--[if lt IE 9]>
+    <script src="js/html5shiv.js"></script>
+    <![endif]-->
+    <!-- CSS Files
+    ================================================== -->
+    <link id="bootstrap" href="css/bootstrap.min.css" rel="stylesheet" type="text/css" />
+    <link id="bootstrap-grid" href="css/bootstrap-grid.min.css" rel="stylesheet" type="text/css" />
+    <link id="bootstrap-reboot" href="css/bootstrap-reboot.min.css" rel="stylesheet" type="text/css" />
+    <link href="css/animate.css" rel="stylesheet" type="text/css">
+    <link href="css/owl.carousel.css" rel="stylesheet" type="text/css">
+    <link href="css/owl.theme.css" rel="stylesheet" type="text/css">
+    <link href="css/owl.transitions.css" rel="stylesheet" type="text/css">
+    <link href="css/magnific-popup.css" rel="stylesheet" type="text/css">
+    <link href="css/jquery.countdown.css" rel="stylesheet" type="text/css">
+    <link href="css/style.css" rel="stylesheet" type="text/css">
+    <!-- color scheme -->
+    <link id="colors" href="css/colors/scheme-01.css" rel="stylesheet" type="text/css">
+    <link href="css/coloring.css" rel="stylesheet" type="text/css">
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+</head>
+
+<style>
+    .box {
+        box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+        padding: 40px;
+        margin-top: 30px;
+    }
+
+    .form-group {
+        display: flex;
+        flex-direction: column;
+    }
+
+    input {
+        width: 32vw;
+        max-width: 500px;
+    }
+
+    .form-control {
+        width: 40vw;
+    }
+
+    .calculateDiv {
+        display: flex;
+        flex-direction: row;
+    }
+
+    #calculateButton {
+        margin-left: 30px;
+    }
+
+    @media only screen and (max-width: 768px) {
+        .calculateImage {
+            display: none;
+        }
+
+        .calculateDiv {
+            display: flex;
+            gap: 20px;
+            flex-direction: column;
+        }
+
+        input {
+            width: 100%;
+        }
+
+        #calculateButton {
+            margin-left: 0px;
+            width: 40%;
+        }
+
+    }
+
+    @media only screen and (max-width: 992px) {
+        .calculateImage {
+            display: none;
+        }
+    }
+
+    @media only screen and (max-width: 480px) {
+        .box {
+            padding: 20px;
+        }
+    }
+</style>
+
+<body>
+    <div id="wrapper">
+
+        <!-- header section starts -->
+        <div id="header"></div>
+
+
+        <!-- content begin -->
+        <div class="no-bottom no-top" id="content">
+            <div id="top"></div>
+            <!-- section begin -->
+            <section id="subheader" class="jarallax text-white">
+                <img src="images/background/subheader.jpg" class="jarallax-img" alt="">
+                <div class="center-y relative text-center">
+                    <div class="container">
+                        <div class="row">
+                            <div class="col text-center">
+                                <div class="spacer-single"></div>
+                                <h1>Court Fee Calculator</h1>
+                            </div>
+                            <div class="clearfix"></div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+            <!-- section close -->
+
+
+
+
+
+
+            <section class="no-bottom relative text-white">
+                <div class="row no-gutters mt-100">
+                    <div class="container">
+                        <div class="box">
+                            <span class="p-title wow fadeInUp" style="color: rgb(57, 38, 230);;">Calculator</span>
+
+                            <div class="mainformDiv"
+                                style="display: flex; flex-direction: row; justify-content: space-between; ">
+                                <div>
+                                    <a href="calculate.html">
+                                        <h2 style="padding-bottom: 10px; color: black;">Calculate your Court Fee</h2>
+                                    </a>
+                                    <form id="courtFeeForm">
+                                        <div class="form-group">
+                                            <label for="amountInput" style="margin-right: 10px; color: black;">Enter
+                                                your
+                                                amount:</label>
+                                            <div class="calculateDiv">
+                                                <input type="number" id="amountInput" placeholder="Enter amount" />
+
+                                                <button type="button" id="calculateButton"
+                                                    style="background-color: rgb(57, 38, 230);;"
+                                                    class="btn btn-primary">Calculate</button>
+                                            </div>
+                                        </div>
+                                        <div class="form-group mt-3" style="margin-top: 20px; color: black;">
+                                            <label for="courtFeeOutput">Court Fee to be paid before court:</label>
+                                            <input type="text" id="courtFeeOutput" readonly
+                                                placeholder="Calculated fee will appear here" />
+                                        </div>
+                                    </form>
+                                </div>
+                                <div class="calculateImage">
+                                    <img style="width: 350px;" src="images/calculate.jpg">
+                                </div>
+                            </div>
+                            <!-- Table for calculation breakdown -->
+                            <div>
+                                <table id="calculationTable" class="table table-bordered"
+                                    style="width: 100%; margin-top: 20px; border-collapse: collapse; border: 1px solid #ccc;">
+                                    <thead style="background-color: rgb(139, 138, 135);; color: white;">
+                                        <tr>
+                                            <th style="padding: 10px; border: 1px solid #ccc;">Range</th>
+                                            <th style="padding: 10px; border: 1px solid #ccc;">Fee</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <!-- Initial placeholder values -->
+                                        <tr>
+                                            <td style="padding: 10px; border: 1px solid #ccc;">Up to 25,000</td>
+                                            <td style="padding: 10px; border: 1px solid #ccc;">Rs..........</td>
+                                        </tr>
+                                        <tr>
+                                            <td style="padding: 10px; border: 1px solid #ccc;">25,001 to 50,000</td>
+                                            <td style="padding: 10px; border: 1px solid #ccc;">Rs..........</td>
+                                        </tr>
+                                        <tr>
+                                            <td style="padding: 10px; border: 1px solid #ccc;">50,001 to 1,00,000</td>
+                                            <td style="padding: 10px; border: 1px solid #ccc;">Rs..........</td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+
+                        </div>
+                    </div>
+            </section>
+
+        </div>
+
+
+        <div style="margin-bottom: 0px; padding-bottom: 0px; margin-top: 80px;">
+            <div class="container">
+                <h3>
+                    Court Fee Calculation of Nepal
+                </h3>
+                <p style="font-size: 15px; font-weight: 600;">
+                    The below mentioned Court Fee Calculator assist clients, lawyers and officials of court to
+                    calculate
+                    the court fee that need to be submitted before the court in Nepal on civil cases. Section 63 of
+                    the
+                    National Civil Procedure (Code) Act, 2017 creates the obligation to pay the court fee while
+                    filling
+                    the plaint, an appeal or counterclaim based on the value or claimed amount.
+                </p>
+                </br>
+
+                <h3>
+                    How Court Fee is Determined?
+                </h3>
+                <p style="font-size: 15px; font-weight: 600;">
+                    The rate of court fee is calculated based on the following criteria as determined by the Section
+                    69
+                    of Chapter of Provisions Relating to Court Fees of National Civil Procedure (Code) Act, 2017 of
+                    Nepal.
+                </p>
+
+            </div>
+        </div>
+
+
+
+
+
+        <div style="margin-bottom: 60px;">
+            <div class="">
+                <div class="container">
+
+                    <!-- Small Table with 8 Rows and 2 Columns -->
+                    <table class="table table-bordered"
+                        style="width: 100%; margin-top: 0px; border-collapse: collapse; border: 1px solid #ccc;">
+                        <thead style="background-color: rgb(139, 138, 135); color: white;">
+                            <tr>
+                                <th style="padding: 10px; border: 1px solid #ccc;">Amount</th>
+                                <th style="padding: 10px; border: 1px solid #ccc;">Court Fee</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td style="padding: 10px; border: 1px solid #ccc;">a. Up to 25,000</td>
+                                <td style="padding: 10px; border: 1px solid #ccc;">Rs. 500/- (Five hundred rupees
+                                    only)</td>
+                            </tr>
+                            <tr>
+                                <td style="padding: 10px; border: 1px solid #ccc;">b. 25,001 to 50,000</td>
+                                <td style="padding: 10px; border: 1px solid #ccc;">5% of the amount</td>
+                            </tr>
+                            <tr>
+                                <td style="padding: 10px; border: 1px solid #ccc;">c. 50,001 to 1,00,000</td>
+                                <td style="padding: 10px; border: 1px solid #ccc;">3. 5 % of the amount</td>
+                            </tr>
+                            <tr>
+                                <td style="padding: 10px; border: 1px solid #ccc;">d. 1,00,001 to 5,00,000</td>
+                                <td style="padding: 10px; border: 1px solid #ccc;">2% of the amount</td>
+                            </tr>
+                            <tr>
+                                <td style="padding: 10px; border: 1px solid #ccc;">e. 5,00,001 to 25,00,000</td>
+                                <td style="padding: 10px; border: 1px solid #ccc;">1.5% of the amount</td>
+                            </tr>
+                            <tr>
+                                <td style="padding: 10px; border: 1px solid #ccc;">f. More than 25,00,000</td>
+                                <td style="padding: 10px; border: 1px solid #ccc;">1% of the amount</td>
+                            </tr>
+                        </tbody>
+                    </table>
+
+                </div>
+            </div>
+        </div>
+
+    </div>
+    <!-- content close -->
+    <a href="about.html#" id="back-to-top"></a>
+
+
+    <!-- header section starts -->
+    <div id="footer"></div>
+
+
+    <div id="preloader">
+        <div class="spinner">
+            <div class="bounce1"></div>
+            <div class="bounce2"></div>
+            <div class="bounce3"></div>
+        </div>
+    </div>
+    </div>
+
+
+    <div id="purchase-now" style="display: flex; align-items: center; justify-content: center;">
+        <a href="https://wa.me/9779851201490" target="_blank"
+            style="display: flex; align-items: center; justify-content: center;">
+            <div style="display: flex; align-items: center; justify-content: center;">
+                <i class="fab fa-whatsapp"></i>
+            </div>
+        </a>
+    </div>
+
+    <!-- Javascript Files
+    ================================================== -->
+    <script src="js/jquery.min.js"></script>
+    <script src="js/bootstrap.min.js"></script>
+    <script src="js/wow.min.js"></script>
+    <script src="js/jquery.isotope.min.js"></script>
+    <script src="js/easing.js"></script>
+    <script src="js/owl.carousel.js"></script>
+    <script src="js/validation.js"></script>
+    <script src="js/jquery.magnific-popup.min.js"></script>
+    <script src="js/enquire.min.js"></script>
+    <script src="js/jquery.stellar.min.js"></script>
+    <script src="js/jquery.plugin.js"></script>
+    <script src="js/typed.js"></script>
+    <script src="js/jarallax.js"></script>
+    <script src="js/jquery.countTo.js"></script>
+    <script src="js/jquery.countdown.js"></script>
+    <script src="js/designesia.js"></script>
+
+
+    <script>
+        $(function () {
+            $("#header").load("header.html", function () {
+                const currentPage = window.location.pathname.split("/").pop();
+
+                // Select all menu links
+                const menuItems = document.querySelectorAll('.menu-link');
+
+                // Iterate through each menu item
+                menuItems.forEach(function (menuItem) {
+                    // Compare the href attribute with the current page
+                    if (menuItem.getAttribute('href') === currentPage) {
+                        menuItem.classList.add('active'); // Add 'active' class to active menu items
+                    }
+                });
+            });
+
+            // Load other sections
+
+            $("#footer").load("footer.html");
+        });
+
+
+    </script>
+
+
+    <style>
+        /* Styling for the active menu item */
+        .menu-area .main-menu ul li a.active {
+            color: #FFA500 !important;
+            /* Orange color */
+            font-weight: bold;
+            /* Make the active item bold */
+        }
+
+        /* Mobile styles */
+        @media (max-width: 991px) {
+            .th-mobile-menu ul li a.active {
+                color: #FFA500 !important;
+                /* Orange color for active menu items */
+            }
+
+            /* Apply orange color on hover or focus */
+            .th-mobile-menu ul li a:hover,
+            .th-mobile-menu ul li a:focus {
+                color: #FFA500 !important;
+            }
+        }
+    </style>
+
+
+    <script>
+        $(document).ready(function () {
+            // Function to get query parameters
+            function getQueryParam(param) {
+                const urlParams = new URLSearchParams(window.location.search);
+                return urlParams.get(param);
+            }
+
+            // Detect if the page is refreshed
+            function isPageRefresh() {
+                return window.performance && performance.navigation.type === performance.navigation.TYPE_RELOAD;
+            }
+
+            // Check if the page is refreshed
+            const pageRefresh = isPageRefresh();
+
+            // Get the amount from the URL if present
+            const amountFromUrl = parseFloat(getQueryParam('amount'));
+
+            // If the page is NOT refreshed and there's an amount in the URL, pre-fill the input and calculate the result
+            if (!pageRefresh && !isNaN(amountFromUrl) && amountFromUrl > 0) {
+                $("#amountInput").val(amountFromUrl);
+                calculateFee(amountFromUrl);
+
+                // Remove the amount from the URL to make the page appear "fresh"
+                const newUrl = window.location.protocol + "//" + window.location.host + window.location.pathname;
+                window.history.replaceState({ path: newUrl }, '', newUrl);
+            } else {
+                // If the page is refreshed, or no amount in the URL, clear everything
+                $("#amountInput").val('');
+                $("#courtFeeOutput").val('');
+                $("#calculationDetailsLink").hide();
+                $("#calculationTable tbody").html(`
+            <tr>
+                <td style="padding: 10px; border: 1px solid #ccc;">Up to 25,000</td>
+                <td style="padding: 10px; border: 1px solid #ccc;">Rs..........</td>
+            </tr>
+            <tr>
+                <td style="padding: 10px; border: 1px solid #ccc;">25,001 to 50,000</td>
+                <td style="padding: 10px; border: 1px solid #ccc;">Rs..........</td>
+            </tr>
+            <tr>
+                <td style="padding: 10px; border: 1px solid #ccc;">50,001 to 1,00,000</td>
+                <td style="padding: 10px; border: 1px solid #ccc;">Rs..........</td>
+            </tr>
+        `);
+            }
+
+            // Function to calculate court fee with breakdown
+            function calculateFee(amount) {
+                let totalFee = 0;
+                let breakdown = "";
+
+                // Calculation logic for each range and adding breakdown for the table
+                if (amount <= 25000) {
+                    totalFee = 500;
+                    breakdown += `<tr><td>Up to 25,000</td><td>Rs.500.00</td></tr>`;
+                } else if (amount <= 50000) {
+                    const firstPart = 500;
+                    const secondPart = (amount - 25000) * 0.05; // 5% of the remaining
+                    totalFee = firstPart + secondPart;
+                    breakdown += `<tr><td>Up to 25,000</td><td>Rs.500.00</td></tr>`;
+                    breakdown += `<tr><td>25,001 to 50,000 : 5% of ${amount - 25000}</td><td>Rs.${secondPart.toFixed(2)}</td></tr>`;
+                } else if (amount <= 100000) {
+                    const firstPart = 500;
+                    const secondPart = 25000 * 0.05; // 5% of 25,001 to 50,000
+                    const thirdPart = (amount - 50000) * 0.035; // 3.5% of the remaining
+                    totalFee = firstPart + secondPart + thirdPart;
+                    breakdown += `<tr><td>Up to 25,000</td><td>Rs.500.00</td></tr>`;
+                    breakdown += `<tr><td>25,001 to 50,000 : 5% of 25,000</td><td>Rs.${secondPart.toFixed(2)}</td></tr>`;
+                    breakdown += `<tr><td>50,001 to 1,00,000 : 3.5% of ${amount - 50000}</td><td>Rs.${thirdPart.toFixed(2)}</td></tr>`;
+                } else {
+                    const firstPart = 500;
+                    const secondPart = 25000 * 0.05; // 5% of 25,001 to 50,000
+                    const thirdPart = 50000 * 0.035; // 3.5% of 50,001 to 1,00,000
+                    totalFee = firstPart + secondPart + thirdPart;
+
+                    breakdown += `<tr><td>Up to 25,000</td><td>Rs.500.00</td></tr>`;
+                    breakdown += `<tr><td>25,001 to 50,000 : 5% of 25,000</td><td>Rs.${secondPart.toFixed(2)}</td></tr>`;
+                    breakdown += `<tr><td>50,001 to 1,00,000 : 3.5% of 50,000</td><td>Rs.${thirdPart.toFixed(2)}</td></tr>`;
+
+                    if (amount > 100000 && amount <= 500000) {
+                        const fourthPart = (amount - 100000) * 0.02; // 2% of the remaining
+                        totalFee += fourthPart;
+                        breakdown += `<tr><td>1,00,001 to 5,00,000 : 2% of ${amount - 100000}</td><td>Rs.${fourthPart.toFixed(2)}</td></tr>`;
+                    } else if (amount > 500000 && amount <= 2500000) {
+                        const fourthPart = 400000 * 0.02; // 2% of 1,00,001 to 5,00,000
+                        const fifthPart = (amount - 500000) * 0.015; // 1.5% of the remaining
+                        totalFee += fourthPart + fifthPart;
+                        breakdown += `<tr><td>1,00,001 to 5,00,000 : 2% of 4,00,000</td><td>Rs.${fourthPart.toFixed(2)}</td></tr>`;
+                        breakdown += `<tr><td>5,00,001 to 25,00,000 : 1.5% of ${amount - 500000}</td><td>Rs.${fifthPart.toFixed(2)}</td></tr>`;
+                    } else if (amount > 2500000) {
+                        const fourthPart = 400000 * 0.02; // 2% of 1,00,001 to 5,00,000
+                        const fifthPart = 2000000 * 0.015; // 1.5% of 5,00,001 to 25,00,000
+                        const sixthPart = (amount - 2500000) * 0.01; // 1% of the remaining
+                        totalFee += fourthPart + fifthPart + sixthPart;
+                        breakdown += `<tr><td>1,00,001 to 5,00,000 : 2% of 4,00,000</td><td>Rs.${fourthPart.toFixed(2)}</td></tr>`;
+                        breakdown += `<tr><td>5,00,001 to 25,00,000 : 1.5% of 20,00,000</td><td>Rs.${fifthPart.toFixed(2)}</td></tr>`;
+                        breakdown += `<tr><td>More than 25,00,000 : 1% of ${amount - 2500000}</td><td>Rs.${sixthPart.toFixed(2)}</td></tr>`;
+                    }
+                }
+
+                // Display the total fee in the output field
+                $("#courtFeeOutput").val("Rs. " + totalFee.toFixed(2));
+
+                // Display the breakdown in the table
+                breakdown += `<tr><td><strong>Total</strong></td><td><strong>Rs.${totalFee.toFixed(2)}</strong></td></tr>`;
+                $("#calculationTable tbody").empty().append(breakdown);
+            }
+
+            // Calculate button click handler
+            $("#calculateButton").click(function () {
+                const amount = parseFloat($("#amountInput").val());
+                if (isNaN(amount) || amount <= 0) {
+                    alert("Please enter a valid amount.");
+                } else {
+                    calculateFee(amount); // Recalculate if the button is clicked manually
+                }
+            });
+
+            // Clear output when the user types or presses backspace in the input
+            $("#amountInput").on("input", function () {
+                $("#courtFeeOutput").val(''); // Clear the result field
+                $("#calculationTable tbody").html(`
+            <tr>
+                <td style="padding: 10px; border: 1px solid #ccc;">Up to 25,000</td>
+                <td style="padding: 10px; border: 1px solid #ccc;">Rs..........</td>
+            </tr>
+            <tr>
+                <td style="padding: 10px; border: 1px solid #ccc;">25,001 to 50,000</td>
+                <td style="padding: 10px; border: 1px solid #ccc;">Rs..........</td>
+            </tr>
+            <tr>
+                <td style="padding: 10px; border: 1px solid #ccc;">50,001 to 1,00,000</td>
+                <td style="padding: 10px; border: 1px solid #ccc;">Rs..........</td>
+            </tr>
+        `); // Clear the breakdown table
+            });
+        });
+
+    </script>
+</body>
+
+</html>
